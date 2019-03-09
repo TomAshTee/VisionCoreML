@@ -20,49 +20,81 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyl-py-8R2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-LU-Fp4">
-                                        <rect key="frame" x="20" y="30" width="335" height="60"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="zNC-Zo-90q"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-mN-hbt">
-                                        <rect key="frame" x="20" y="617" width="79" height="30"/>
-                                        <state key="normal" title="FLASH OFF">
-                                            <color key="titleColor" red="0.90980392160000001" green="0.47843137250000001" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-bm-oN3">
-                                        <rect key="frame" x="280" y="519" width="75" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="0Bg-V3-kpa"/>
-                                            <constraint firstAttribute="width" constant="75" id="U5p-o3-9Mc"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" red="0.450647831" green="0.83932691810000004" blue="0.80395382640000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-mN-hbt" customClass="RoundedShadowBtn" customModule="VisionCoreML" customModuleProvider="target">
+                                <rect key="frame" x="20" y="615" width="90" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="DSR-LU-Fp4" firstAttribute="leading" secondItem="Pyl-py-8R2" secondAttribute="leading" constant="20" id="9zF-EI-prJ"/>
-                                    <constraint firstItem="I5b-mN-hbt" firstAttribute="leading" secondItem="Pyl-py-8R2" secondAttribute="leading" constant="20" id="Ivv-R2-wFa"/>
-                                    <constraint firstItem="DSR-LU-Fp4" firstAttribute="top" secondItem="Pyl-py-8R2" secondAttribute="top" constant="30" id="Oz9-PX-ODY"/>
-                                    <constraint firstAttribute="trailing" secondItem="TlI-bm-oN3" secondAttribute="trailing" constant="20" id="Xyo-XO-iuf"/>
-                                    <constraint firstAttribute="bottom" secondItem="TlI-bm-oN3" secondAttribute="bottom" constant="20" id="cpu-nR-3Gf"/>
-                                    <constraint firstAttribute="bottom" secondItem="I5b-mN-hbt" secondAttribute="bottom" constant="20" id="ugS-1v-Uwx"/>
-                                    <constraint firstAttribute="trailing" secondItem="DSR-LU-Fp4" secondAttribute="trailing" constant="20" id="zo5-hH-NXw"/>
+                                    <constraint firstAttribute="width" constant="90" id="X7L-qt-9bp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <state key="normal" title="FLASH OFF">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-bm-oN3" customClass="RoundedShadowImageView" customModule="VisionCoreML" customModuleProvider="target">
+                                <rect key="frame" x="280" y="519" width="75" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9Tb-eq-E4J"/>
+                                    <constraint firstAttribute="width" constant="75" id="E5T-pV-3am"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-LU-Fp4" customClass="RoundedShadowView" customModule="VisionCoreML" customModuleProvider="target">
+                                <rect key="frame" x="20" y="50" width="335" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="evP-rV-aVd">
+                                        <rect key="frame" x="8" y="8" width="319" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The names of item captured will appear there." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="VvR-9p-a5v">
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="26"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Confidence: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNw-My-veT">
+                                                <rect key="frame" x="0.0" y="26" width="319" height="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="evP-rV-aVd" secondAttribute="bottom" constant="8" id="6pA-vb-LSE"/>
+                                    <constraint firstItem="evP-rV-aVd" firstAttribute="top" secondItem="DSR-LU-Fp4" secondAttribute="top" constant="8" id="Bpw-kq-s0Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="evP-rV-aVd" secondAttribute="trailing" constant="8" id="JNc-Of-YQ8"/>
+                                    <constraint firstItem="evP-rV-aVd" firstAttribute="leading" secondItem="DSR-LU-Fp4" secondAttribute="leading" constant="8" id="MX2-Nn-xac"/>
+                                    <constraint firstAttribute="height" constant="60" id="pDH-vW-fYf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TlI-bm-oN3" secondAttribute="bottom" constant="20" id="2BY-qd-qOC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DSR-LU-Fp4" secondAttribute="trailing" constant="20" id="Iee-ne-89F"/>
+                            <constraint firstItem="I5b-mN-hbt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Oq1-mH-jde"/>
                             <constraint firstItem="Pyl-py-8R2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PZQ-EC-EL0"/>
+                            <constraint firstItem="DSR-LU-Fp4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RLv-Qa-foB"/>
                             <constraint firstItem="Pyl-py-8R2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UcD-xQ-vcz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I5b-mN-hbt" secondAttribute="bottom" constant="20" id="UsM-9G-dPJ"/>
                             <constraint firstItem="Pyl-py-8R2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YQJ-Zf-aQa"/>
+                            <constraint firstItem="DSR-LU-Fp4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="gCp-Zz-VPC"/>
                             <constraint firstItem="Pyl-py-8R2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mPG-4C-qoA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TlI-bm-oN3" secondAttribute="trailing" constant="20" id="rx1-P2-nap"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraView" destination="Pyl-py-8R2" id="r9m-iI-xt7"/>
+                        <outlet property="captureImageView" destination="TlI-bm-oN3" id="jpB-A5-mM2"/>
+                        <outlet property="confidenceLbl" destination="XNw-My-veT" id="JV5-Xj-EkR"/>
+                        <outlet property="flashBtn" destination="I5b-mN-hbt" id="rP6-Fd-K9s"/>
+                        <outlet property="identyficationLbl" destination="VvR-9p-a5v" id="1Hi-88-8kl"/>
+                        <outlet property="roundedLblView" destination="DSR-LU-Fp4" id="coc-m8-v0q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
