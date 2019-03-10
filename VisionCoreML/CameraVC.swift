@@ -11,6 +11,11 @@ import AVFoundation
 import CoreML
 import Vision
 
+enum FlashState {
+    case on
+    case off
+}
+
 class CameraVC: UIViewController {
 
     var captureSession: AVCaptureSession!
@@ -18,6 +23,8 @@ class CameraVC: UIViewController {
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     var photoData: Data?
+    
+    var flashControlSate: FlashState = .off
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var captureImageView: RoundedShadowImageView!
@@ -28,7 +35,6 @@ class CameraVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,22 +85,46 @@ class CameraVC: UIViewController {
         
         settings.previewPhotoFormat = previewFormat
         
+        if flashControlSate == .off {
+            settings.flashMode = .off
+        } else {
+            settings.flashMode = .on
+        }
+        
         cameraOutput.capturePhoto(with: settings, delegate: self)
     }
     
     func resultsMethod(request: VNRequest, error: Error?){
         // Its how our model "think"
         guard let results = request.results as? [VNClassificationObservation] else { return }
-        for classification in results {
-            if classification.confidence < 0.5 {
-                self.identyficationLbl.text = "I'm not sure wht this is. Please try again."
-                self.confidenceLbl.text = ""
-                break
-            } else {
-                self.identyficationLbl.text = classification.identifier
-                self.confidenceLbl.text = "Confidence: \(Int(classification.confidence * 100))%"
-                break
-            }
+//        for classification in results {
+//            if classification.confidence < 0.5 {
+//                self.identyficationLbl.text = "I'm not sure wht this is. Please try again."
+//                self.confidenceLbl.text = ""
+//                print("It's: \(classification.identifier) confidence: \(classification.confidence*100)%")
+//                break
+//            } else {
+//                print("\(classification.identifier)")
+//                self.identyficationLbl.text = classification.identifier
+//                self.confidenceLbl.text = "Confidence: \(Int(classification.confidence * 100))%"
+//                break
+//            }
+        let textFromResult = results.first!.identifier
+        var description = textFromResult.suffix((textFromResult.count - 10))
+        
+        
+        self.identyficationLbl.text = "It's: \(description)"
+        self.confidenceLbl.text = "Confidence: \(Int(results.first!.confidence * 100))%"
+        }
+    
+    @IBAction func flashBtnWasPressed(_ sender: Any) {
+        switch flashControlSate {
+        case .off:
+            flashBtn.setTitle("FLASH ON", for: .normal)
+            flashControlSate = .on
+        case .on:
+            flashBtn.setTitle("FLASH OFF", for: .normal)
+            flashControlSate = .off
         }
     }
 }
@@ -107,8 +137,9 @@ extension CameraVC: AVCapturePhotoCaptureDelegate {
             photoData = photo.fileDataRepresentation()
             
             do {
-                let model = try VNCoreMLModel(for: SqueezeNet().model)
+                let model = try VNCoreMLModel(for: MobileNet().model)
                 let request = VNCoreMLRequest(model: model, completionHandler: resultsMethod)
+                request.imageCropAndScaleOption = .centerCrop
                 let handler = VNImageRequestHandler(data: photoData!)
                 try handler.perform([request])
             } catch {

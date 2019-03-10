@@ -32,6 +32,9 @@
                                 <state key="normal" title="FLASH OFF">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="flashBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SoZ-O6-40a"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-bm-oN3" customClass="RoundedShadowImageView" customModule="VisionCoreML" customModuleProvider="target">
                                 <rect key="frame" x="280" y="519" width="75" height="128"/>
